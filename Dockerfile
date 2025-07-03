@@ -82,9 +82,13 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 
 COPY version-tag.txt /home/node/version-tag.txt
 
+# Accept build argument for Claude Code version
+ARG CLAUDE_CODE_VERSION=latest
+
 # https://github.com/johnhuang316/code-index-mcp
 RUN pip install --upgrade --break-system-packages code-index-mcp \
   && pip install --upgrade --break-system-packages uv \
-  && npm install -g @anthropic-ai/claude-code \
+  && npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} \
   && npm cache clean --force \
-  && rm -rf /tmp/* /var/tmp/*
+  && rm -rf /tmp/* /var/tmp/* \
+  && echo "Installed @anthropic-ai/claude-code version: ${CLAUDE_CODE_VERSION}" > /home/node/claude-code-version.txt
