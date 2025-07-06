@@ -25,3 +25,5 @@ build-test:
 push:
 	docker push giladrm/claude-code:latest
 	docker push giladrm/claude-code:$(VERSION)
+
+deploy: build push
