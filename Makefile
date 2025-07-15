@@ -2,8 +2,8 @@
 VERSION := $(shell npm view @anthropic-ai/claude-code version)
 BUILD_DATE := $(shell date '+%Y-%m-%d %H:%M:%S')
 
-.PHONY: version
-version:
+.PHONY: show-last-version
+show-last-version:
 	@echo "Latest @anthropic-ai/claude-code version: $(VERSION)"
 
 .PHONY: update-version-tag
