@@ -25,6 +25,10 @@ done
 
 if [ "$UPDATE_PATH" = true ]; then
   echo "Added ~/bin to your PATH in shell configuration files"
+  echo "\033[1;33mIMPORTANT: You need to reload your shell configuration to use the script.\033[0m"
+  echo "Run one of the following commands depending on your shell:"
+  echo "  source ~/.bashrc  # For bash users"
+  echo "  source ~/.zshrc   # For zsh users"
 fi
 
 # Download the script
@@ -38,7 +42,12 @@ chmod +x "$INSTALL_PATH"
 if [ -x "$INSTALL_PATH" ]; then
   echo "Installation complete!"
   echo "You can now run the script with: run-claude-docker.sh"
-  echo "Please restart your terminal or run 'source ~/.bashrc' (or 'source ~/.zshrc') to update PATH."
+  echo ""
+  echo "\033[1;33mIMPORTANT: If you haven't used the script before, you need to:\033[0m"
+  echo "1. Reload your shell configuration:"
+  echo "   source ~/.bashrc  # For bash users"
+  echo "   source ~/.zshrc   # For zsh users"
+  echo "2. Or restart your terminal"
   echo ""
   echo "Note: If you're using a different shell, make sure to add $HOME/bin to your PATH."
 else
