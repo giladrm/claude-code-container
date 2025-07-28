@@ -1,2 +1,2 @@
-Claude Code Version: 1.0.59
-Build Date: 2025-07-24 10:19:21
+Claude Code Version: 1.0.61
+Build Date: 2025-07-28 15:26:31
