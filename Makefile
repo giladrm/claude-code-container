@@ -2,6 +2,26 @@
 VERSION := $(shell npm view @anthropic-ai/claude-code version)
 BUILD_DATE := $(shell date '+%Y-%m-%d %H:%M:%S')
 
+.PHONY: help
+help:
+	@echo "Claude Code Container - Makefile Help"
+	@echo "------------------------------------"
+	@echo "This Makefile builds and deploys the Claude Code Docker container"
+	@echo
+	@echo "Available commands:"
+	@echo "  help               : Show this help message"
+	@echo "  show-last-version  : Display the latest version of @anthropic-ai/claude-code"
+	@echo "  update-version-tag : Update version-tag.txt with build information"
+	@echo "  build              : Build Docker images (both latest and version-tagged)"
+	@echo "  build-test         : Build a test Docker image"
+	@echo "  push               : Push Docker images to Docker Hub"
+	@echo "  deploy             : Build and push Docker images (combines build and push)"
+	@echo
+	@echo "Usage examples:"
+	@echo "  make help               # Show this help"
+	@echo "  make build              # Build the Docker images"
+	@echo "  make deploy             # Build and push the Docker images"
+
 .PHONY: show-last-version
 show-last-version:
 	@echo "Latest @anthropic-ai/claude-code version: $(VERSION)"
@@ -25,5 +45,7 @@ build-test:
 push:
 	docker push giladrm/claude-code:latest
 	docker push giladrm/claude-code:$(VERSION)
+
+.DEFAULT_GOAL := help
 
 deploy: build push
